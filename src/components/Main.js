@@ -40,7 +40,7 @@ const Main = () => {
       }
     });
     setSortedName(userList);
-    console.log(userList);
+    // console.log(userList);
   };
 
   const handleChange = (event) => {
