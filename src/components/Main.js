@@ -8,7 +8,7 @@ const Main = () => {
   const [users, setUsers] = useState([{}]);
   const [filteredUsers, setFilteredUsers] = useState([{}]);
   const [sortedName, setSortedName] = useState(users);
-  const [sortType, setSortType] = useState();
+  const [isSorted, setIsSorted] = useState(false);
 
   useEffect(() => {
     API.search()
@@ -28,7 +28,16 @@ const Main = () => {
       const textB = testTwo.toUpperCase();
       const ascendingSort = textA < textB ? -1 : textA > textB ? 1 : 0;
       const desendingSort = textA > textB ? -1 : textA < textB ? 1 : 0;
-      return ascendingSort;
+      const toggleIsSorted = () => setIsSorted(!isSorted);
+
+      toggleIsSorted();
+
+      if (isSorted) {
+        return ascendingSort;
+      }
+      if (!isSorted) {
+        return desendingSort;
+      }
     });
     setSortedName(userList);
     console.log(userList);
